@@ -342,30 +342,30 @@ body{background:var(--milani-cream);color:var(--milani-ink)}
 #inicio-publicidade .ad-top{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:18px}
 #inicio-publicidade .ad-top h1{font-size:clamp(23px,3vw,37px);line-height:1.2;margin:0;color:#fff}
 #inicio-publicidade .ad-top a{color:#72d9ff;font-size:15px}
-#inicio-publicidade .ad-slide{display:none;text-align:center}
+#inicio-publicidade .ad-slide{display:none;position:relative;overflow:hidden;border-radius:18px;min-height:480px;background:#0a2039}
 #inicio-publicidade .ad-slide.active{display:block}
-#inicio-publicidade .ad-slide img{display:block;width:100%;max-width:1100px;height:auto;max-height:75vh;object-fit:contain;margin:0 auto;border-radius:12px}
-#inicio-publicidade .ad-caption{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;max-width:1100px;margin:15px auto 0}
-#inicio-publicidade .ad-caption strong{font-size:clamp(17px,2vw,24px)}
+#inicio-publicidade .ad-slide img{display:block;width:100%;height:clamp(480px,65vw,700px);object-fit:cover;object-position:center;background:#0a2039}
+#inicio-publicidade .ad-caption{position:absolute;inset:0 auto 0 0;width:min(48%,550px);padding:clamp(24px,4vw,60px);display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:18px;background:linear-gradient(90deg,rgba(5,22,43,.96),rgba(5,22,43,.84) 75%,transparent);color:#fff}
+#inicio-publicidade .ad-caption strong{font-size:clamp(26px,3.4vw,50px);line-height:1.12;text-align:left}#inicio-publicidade .ad-caption .ad-business{font-size:clamp(17px,2vw,25px);font-weight:700}#inicio-publicidade .ad-caption .ad-description{font-size:clamp(14px,1.3vw,18px);line-height:1.5;text-align:left;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
 #inicio-publicidade .ad-caption a{background:#18b5d7;color:#071a30;padding:12px 18px;border-radius:9px;font-weight:800;text-decoration:none}
 #inicio-publicidade .ad-controls{display:flex;justify-content:center;align-items:center;gap:18px;margin-top:20px}
 #inicio-publicidade .ad-controls button{cursor:pointer;border:1px solid #7293aa;background:#143450;color:white;border-radius:30px;padding:8px 15px}
 #inicio-publicidade .ad-counter{font-size:14px;color:#c4d9e9}
-@media(max-width:650px){#inicio-publicidade .ad-slide img{max-height:65vh}#inicio-publicidade .ad-caption{justify-content:center;text-align:center}}
+@media(max-width:650px){#inicio-publicidade .ad-slide{min-height:0}#inicio-publicidade .ad-slide img{height:340px}#inicio-publicidade .ad-caption{position:relative;width:100%;padding:22px;background:#123451;align-items:flex-start}#inicio-publicidade .ad-caption strong{font-size:26px}}
 </style>
 <section id="inicio-publicidade" aria-label="Carrossel de anúncios"><div class="ad-shell"><div class="ad-top"><h1>📢 Empresas em destaque</h1><a href="/anuncios.html">Ver todos os anunciantes ↗</a></div><div id="ads-home"><p>Carregando publicidades...</p></div></div></section>
 <script type="module">
 import{createClient}from'https://esm.sh/@supabase/supabase-js@2.49.8';
 const db=createClient('https://lydznydmkcwqtxukktyy.supabase.co','sb_publishable_jJ98f2Xpok2CrjJ4KfRFmA_ahQaWfAv');
 const box=document.getElementById('ads-home'),date=new Date().toLocaleDateString('en-CA',{timeZone:'America/Sao_Paulo'});
-const {data,error}=await db.from('milani_ads').select('id,business_name,title,image_url,destination_url').in('placement',['inicio','todos']).eq('active',true).eq('payment_status','pago').lte('start_date',date).or('end_date.is.null,end_date.gte.'+date).order('created_at',{ascending:false}).limit(30);
+const {data,error}=await db.from('milani_ads').select('id,business_name,title,description,image_url,destination_url').in('placement',['inicio','todos']).eq('active',true).eq('payment_status','pago').lte('start_date',date).or('end_date.is.null,end_date.gte.'+date).order('created_at',{ascending:false}).limit(30);
 const valid=u=>{try{const x=new URL(u);return x.protocol==='https:'?x.href:null}catch{return null}};
 if(error){box.textContent='Não foi possível carregar as publicidades.'}else{
 const ads=(data||[]).filter(a=>valid(a.image_url)&&valid(a.destination_url));
 if(!ads.length){box.textContent='Em breve, novas empresas em destaque.'}else{
 box.replaceChildren();const slides=[];let current=0,timer;
 for(const ad of ads){const slide=document.createElement('article');slide.className='ad-slide';const img=document.createElement('img');img.src=valid(ad.image_url);img.alt='Publicidade de '+ad.business_name;img.loading=slides.length?'lazy':'eager';slide.append(img);
-const cap=document.createElement('div');cap.className='ad-caption';const title=document.createElement('strong');title.textContent=ad.title||ad.business_name;const link=document.createElement('a');link.href=valid(ad.destination_url);link.target='_blank';link.rel='noopener noreferrer';link.textContent='Conhecer empresa ↗';link.addEventListener('click',()=>db.from('milani_ad_events').insert({ad_id:ad.id,event_type:'click'}).then(()=>{}));cap.append(title,link);slide.append(cap);box.append(slide);slides.push(slide)}
+const cap=document.createElement('div');cap.className='ad-caption';const company=document.createElement('span');company.className='ad-business';company.textContent=ad.business_name;cap.append(company);const title=document.createElement('strong');title.textContent=ad.title||ad.business_name;const link=document.createElement('a');link.href=valid(ad.destination_url);link.target='_blank';link.rel='noopener noreferrer';link.textContent='Conhecer empresa ↗';link.addEventListener('click',()=>db.from('milani_ad_events').insert({ad_id:ad.id,event_type:'click'}).then(()=>{}));cap.append(title);if(ad.description?.trim()&&ad.description.trim().toLocaleLowerCase('pt-BR')!==ad.title?.trim().toLocaleLowerCase('pt-BR')){const desc=document.createElement('p');desc.className='ad-description';desc.textContent=ad.description;cap.append(desc)}cap.append(link);slide.append(cap);box.append(slide);slides.push(slide)}
 const controls=document.createElement('div');controls.className='ad-controls';const prev=document.createElement('button'),next=document.createElement('button'),count=document.createElement('span');prev.textContent='← Anterior';next.textContent='Próximo →';count.className='ad-counter';controls.append(prev,count,next);
 function show(n){current=(n+slides.length)%slides.length;slides.forEach((slide,i)=>{slide.classList.toggle('active',i===current);slide.querySelector('a').tabIndex=i===current?0:-1});count.textContent=(current+1)+' / '+slides.length;db.from('milani_ad_events').insert({ad_id:ads[current].id,event_type:'view'}).then(()=>{})}
 function start(){clearInterval(timer);if(slides.length>1&&!matchMedia('(prefers-reduced-motion: reduce)').matches)timer=setInterval(()=>show(current+1),6500)}
