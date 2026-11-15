@@ -10,6 +10,24 @@ html,body{background-color:#f3f7fd!important}
 body{background-image:url('Fundo%20Abstrato%20Azul%20e%20Branco.png')!important;background-position:center top!important;background-repeat:no-repeat!important;background-size:cover!important;background-attachment:fixed!important}
 body>main,body>section,main>section,.section,.section.alt,.hero,.page-hero,.content-section{background-color:transparent!important;background-image:none!important}
 @media(max-width:750px){body{background-attachment:scroll!important;background-size:auto 100%!important}}
+</style><style id="milani-consistent-black-red-2026">
+/* Identidade visual alinhada à página inicial: preto, grafite, vermelho e branco */
+:root{background:#090b10!important;color:#f4f7fc!important}
+html,body{background:#090b10!important;background-image:none!important;color:#f4f7fc!important}
+header,header.top,.top{background:#b5122c!important;background-image:none!important;border-color:#d82b45!important;color:#fff!important}
+header a,header .links a,header .navlinks a,header .brand-name,header .logo{color:#fff!important}
+header .btn,header .nav-entry{background:#d71932!important;color:#fff!important;border-color:#f04c61!important}
+main,main>section,section.hero,section.agency-section,section.milani-jobs,section.milani-portfolio-home,.section,.section.alt,.services-back,.jobs-back{background:#090b10!important;background-image:none!important;color:#f4f7fc!important}
+h1,h2,h3,h4,.section-intro h1,.section-intro h2,.jobs-heading h1,.hero h1{color:#fff!important}
+main p,main li,main .muted,main .sub,main .lead,main label{color:#d5deeb!important}
+.section-index,.eyebrow,.jobs-kicker,.portfolio-home-kicker,.tag{color:#ff4966!important}
+main a:not(.btn):not(.agency-button):not(.read),.services-back a,.jobs-back a{color:#ff4966}
+main .card,main article.job-opening,main .portfolio-empty,main .quote-form,main .note,main .filters{background:#171c28!important;border-color:#343a48!important;color:#fff!important}
+main .card h2,main .card h3,main .card p,main .card li,main article.job-opening p,main .portfolio-empty p{color:#f4f7fc!important}
+main .btn,main .agency-button,main .read,main button[type=submit]{background:#e7193d!important;color:#fff!important;border-color:#e7193d!important}
+main input,main textarea,main select{background:#202635!important;color:#fff!important;border-color:#485064!important}
+main input::placeholder,main textarea::placeholder{color:#aebbd0!important}
+footer{background:#090b10!important;color:#aebbd0!important;border-color:#242936!important}
 </style></head><body><main class="wrap"><a href="/">← MILANI SOLUÇÕES DIGITAIS</a><h1>📢 Empresas parceiras</h1><p class="muted">Publicidade • Conheça negócios de Votuporanga e região</p><div id="ads" class="grid"><p>Carregando anúncios...</p></div><p class="muted">Conteúdo publicitário identificado. Os links levam a sites externos.</p></main><script type="module">import{createClient}from'https://esm.sh/@supabase/supabase-js@2.49.8';const db=createClient('https://lydznydmkcwqtxukktyy.supabase.co','sb_publishable_jJ98f2Xpok2CrjJ4KfRFmA_ahQaWfAv');const esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const box=document.getElementById('ads');const {data,error}=await db.from('milani_ads').select('id,business_name,title,description,image_url,destination_url,plan').in('placement',['parceiros','todos']).eq('active',true).eq('payment_status','pago').lte('start_date',new Date().toISOString().slice(0,10)).or('end_date.is.null,end_date.gte.'+new Date().toISOString().slice(0,10)).order('created_at',{ascending:false});if(error)box.textContent='Não foi possível carregar os anúncios.';else if(!data.length)box.innerHTML='<p>Nenhum anúncio publicado no momento.</p>';else{box.innerHTML=data.map(a=>'<article class="card"><small>PUBLICIDADE · '+esc(a.plan)+'</small>'+(a.image_url?'<img loading="lazy" src="'+esc(a.image_url)+'" alt="Anúncio de '+esc(a.business_name)+'">':'')+'<h2>'+esc(a.title)+'</h2><p>'+esc(a.description)+'</p><p class="muted">'+esc(a.business_name)+'</p><a class="btn ad-click" data-id="'+esc(a.id)+'" href="'+esc(a.destination_url)+'" target="_blank" rel="noopener noreferrer">Conhecer empresa ↗</a></article>').join('');for(const a of data)db.from('milani_ad_events').insert({ad_id:a.id,event_type:'view'}).then(()=>{});box.addEventListener('click',e=>{const a=e.target.closest('.ad-click');if(a)db.from('milani_ad_events').insert({ad_id:a.dataset.id,event_type:'click'}).then(()=>{})})}
 </script></body></html>
