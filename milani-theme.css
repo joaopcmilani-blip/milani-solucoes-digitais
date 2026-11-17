@@ -208,3 +208,40 @@ html body.milani-theme .milani-projects-showcase :is(.milani-project-art:hover .
 @media (min-width: 1024px) {
   #site .milani-projects-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
+
+/* Black surfaces, orange icons and pink interaction states. */
+:root {
+  --milani-bg: #000;
+  --milani-nav: #0d0d0f;
+  --milani-surface: #121214;
+  --milani-warm: #171413;
+  --milani-accent: #ffad68;
+  --milani-hover: #ff83bd;
+}
+html body.milani-theme #site,
+html body.milani-theme #site main,
+html body.milani-theme #site .glass-home {
+  background: var(--milani-bg) !important;
+}
+html body.milani-theme :is(.pulse-icon,.service-arrow,.card .icon,.pulse-contact-info > div > span,.glass-services a span[aria-hidden]) {
+  color: var(--milani-accent) !important;
+}
+html body.milani-theme .milani-header .milani-admin-link {
+  background: var(--milani-surface);
+  border-color: var(--milani-accent);
+}
+html body.milani-theme :where(a,button):is(:hover,:focus-visible) {
+  color: var(--milani-hover) !important;
+}
+html body.milani-theme :is(.milani-header .milani-menu,.glass-actions,.glass-services,.milani-projects-showcase,#planos,#contato,#inicio-publicidade) :is(a,button):is(:hover,:focus-visible),
+html body.milani-theme :is(main,.agency-footer) :is(.btn,.agency-button,.milani-solution-cta,.milani-solutions-main-cta,.jobs-source-btn,.contact-cta,.read,.button):is(:hover,:focus-visible) {
+  background: #000 !important;
+  color: var(--milani-hover) !important;
+  border-color: var(--milani-hover) !important;
+}
+html body.milani-theme .milani-projects-showcase .milani-project-art:is(:hover,:focus-visible) .milani-project-image-tag {
+  background: #000 !important;
+  color: var(--milani-hover) !important;
+  border-color: var(--milani-hover) !important;
+}
+html body.milani-theme :focus-visible { outline-color: var(--milani-hover); }
