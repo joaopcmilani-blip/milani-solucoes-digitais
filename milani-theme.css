@@ -170,3 +170,17 @@ html body.milani-theme main #servicos .milani-solutions-main-cta {
   color: #231d17 !important;
   border-color: var(--milani-cream) !important;
 }
+
+html body.milani-theme .milani-projects-showcase :is(.milani-projects-heading,.milani-project-details) > span {
+  color: var(--milani-accent) !important;
+}
+html body.milani-theme .milani-projects-showcase :is(.milani-project-image-tag,.milani-project-details a,.milani-projects-end a) {
+  background: var(--milani-cream) !important;
+  color: #231d17 !important;
+  border: 1px solid var(--milani-cream);
+  border-radius: 40px;
+}
+html body.milani-theme .milani-projects-showcase :is(.milani-project-art:hover .milani-project-image-tag,.milani-project-details a:hover,.milani-projects-end a:hover) {
+  background: var(--milani-accent) !important;
+  border-color: var(--milani-accent);
+}
