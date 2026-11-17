@@ -204,3 +204,7 @@ html body.milani-theme .milani-projects-showcase :is(.milani-project-art:hover .
 @media (max-width: 720px) {
   #site .milani-projects-grid { grid-template-columns: 1fr; }
 }
+
+@media (min-width: 1024px) {
+  #site .milani-projects-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
