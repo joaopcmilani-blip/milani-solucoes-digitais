@@ -1,0 +1,89 @@
+:root {
+  --milani-bg: #0b0e14;
+  --milani-nav: #0b202d;
+  --milani-surface: #141c27;
+  --milani-warm: #241f1b;
+  --milani-line: #52606d;
+  --milani-text: #f4f6fc;
+  --milani-muted: #bdc8d4;
+  --milani-accent: #67e2d0;
+  --milani-cream: #fff8ed;
+}
+html body.milani-theme {
+  background: var(--milani-bg) !important;
+  color: var(--milani-text) !important;
+  font-family: "DM Sans", system-ui, sans-serif !important;
+}
+.milani-theme :focus-visible { outline: 2px solid var(--milani-accent); outline-offset: 4px; }
+body.milani-theme .milani-header {
+  position: relative;
+  z-index: 10;
+  width: min(92%, 1416px);
+  margin: 24px auto;
+  border: 1px solid var(--milani-line);
+  border-radius: 44px;
+  background: var(--milani-nav);
+  color: var(--milani-text);
+}
+html body.milani-theme #site .milani-header { position: absolute; inset: 0 0 auto; margin: clamp(20px, 4vw, 54px) auto 0; background: var(--milani-nav) !important; }
+.milani-header .milani-nav-inner { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 10px clamp(14px, 2vw, 26px); min-height: 64px; }
+.milani-header a { color: inherit; text-decoration: none; }
+.milani-header .milani-brand { display: flex; align-items: center; gap: 12px; font-size: clamp(12px, 1.35vw, 19px); font-weight: 800; }
+.milani-brand img { width: 58px; height: 52px; object-fit: contain; border-radius: 9px; background: white; }
+.milani-header .milani-menu { display: flex; align-items: center; gap: clamp(12px, 1.5vw, 24px); font-size: 14px; font-weight: 700; }
+.milani-header a:hover, .milani-header [aria-current="page"] { color: var(--milani-accent); }
+.milani-header .milani-admin-link { border: 1px solid #4dcfbd; border-radius: 30px; background: #0c514d; padding: 9px 14px; }
+.milani-header .milani-menu-toggle { display: none; }
+html body.milani-theme :is(.agency-section,.milani-solutions-redesign,.milani-projects-showcase,.milani-jobs,.milani-news-home,.milani-portfolio-home,.milani-whatsapp-quote,.pricing-section,.contact-section,.pulse-services,#inicio-publicidade,.agency-footer,.statement-section,.platform-section,.news-page .hero) {
+  background: var(--milani-bg) !important;
+  color: var(--milani-text) !important;
+}
+html body.milani-theme :is(.card,.panel,.pricing-card,.milani-solution-card,.milani-project-card,.milani-whatsapp-option,.news-home-card,.job-opening,.jobs-filter,.jobs-region-search,.portfolio-empty,.portfolio-empty-copy,.portfolio-project,.pulse-service-grid article,.quote-form,.client-group,.client-toggle,.prospect-box,.prospect-panel,.cms-dashboard,.account-security) {
+  background: var(--milani-surface) !important;
+  color: var(--milani-text) !important;
+  border-color: var(--milani-line) !important;
+  border-radius: 18px;
+}
+html body.milani-theme :is(main,.agency-footer) :is(h1,h2,h3,h4) { color: var(--milani-text) !important; }
+html body.milani-theme :is(main,.agency-footer) :is(p,.muted,.sub,.section-index,.eyebrow,.jobs-kicker,.portfolio-home-kicker) { color: var(--milani-muted) !important; }
+html body.milani-theme :is(main,.agency-footer) :is(h1,h2,h3) :is(em,i) { color: var(--milani-accent) !important; }
+html body.milani-theme :is(main,.agency-footer) :is(.btn,.agency-button,.milani-solution-cta,.milani-solutions-main-cta,.jobs-source-btn,.contact-cta,.read,.ad-click,.button,.secondary) {
+  background: #15372f !important;
+  color: var(--milani-text) !important;
+  border: 1px solid #4b8d80 !important;
+  border-radius: 24px !important;
+}
+html body.milani-theme :is(main,.agency-footer) :is(.btn,.agency-button,.milani-solution-cta,.jobs-source-btn,.contact-cta,.read,.button):hover,
+html body.milani-theme .jobs-source-btn.active { background: var(--milani-cream) !important; color: #231d17 !important; }
+html body.milani-theme :is(main,.agency-footer) :is(input:not([type="checkbox"],[type="radio"]),select,textarea) {
+  background: #111923 !important;
+  color: var(--milani-text) !important;
+  border-color: var(--milani-line) !important;
+}
+html body.milani-theme :is(.glass-services,.milani-whatsapp-option) { background: var(--milani-warm) !important; }
+html body.milani-theme.milani-admin :is(.sidebar,.shell,.content,.top,.admin-workspace-actions) { background: var(--milani-bg) !important; color: var(--milani-text) !important; }
+html body.milani-theme.milani-admin :is(.stat,.plan,.cms-item,.prospect-card,table) { background: var(--milani-surface) !important; color: var(--milani-text) !important; border-color: var(--milani-line) !important; }
+@media (max-width: 880px) {
+  .milani-header .milani-menu-toggle {
+    display: inline-grid;
+    place-items: center;
+    min-width: 44px;
+    min-height: 44px;
+    border: 1px solid var(--milani-line);
+    border-radius: 50%;
+    background: var(--milani-surface);
+    color: var(--milani-text);
+    font-size: 22px;
+  }
+  .milani-header .milani-menu { display: none; }
+  .milani-header .milani-menu.is-open {
+    display: grid;
+    position: absolute;
+    inset: calc(100% + 8px) 0 auto;
+    padding: 16px;
+    border: 1px solid var(--milani-line);
+    border-radius: 18px;
+    background: var(--milani-nav);
+  }
+  .milani-header .milani-menu a { padding: 9px 12px; }
+}

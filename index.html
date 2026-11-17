@@ -616,7 +616,27 @@ html body #site .pulse-services .pulse-service-grid a:hover{text-decoration:unde
 @media(max-width:900px){html body #site .pulse-services .pulse-service-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
 @media(max-width:620px){html body #site .pulse-services .pulse-service-grid{grid-template-columns:1fr!important}html body #site .pulse-services .pulse-service-grid article{min-height:0!important;padding:26px!important}}
 @media(prefers-reduced-motion:reduce){html body #site .pulse-services .pulse-service-grid article{transition:none!important}}
-</style><link rel="stylesheet" href="layout-vidro.css"></head><body><div id="site"><header class="top"><div class="wrap nav"><a class="brand" href="#apresentacao"><img alt="Logo MILANI" class="brandlogo" src="milani-logo-novo.png"/><span class="brand-name">MILANI SOLUÇÕES DIGITAIS</span></a><nav class="navlinks"><a href="/servicos.html">Serviços</a><a href="#planos">Planos</a><a href="https://wa.me/5517991369207?text=Ol%C3%A1!%20%F0%9F%91%8B%20Vim%20pelo%20site%20da%20Milani%20Solu%C3%A7%C3%B5es%20Digitais%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento.%0A%0ATenho%20interesse%20em%3A%20Or%C3%A7amento%20de%20servi%C3%A7os%20digitais.%0A%0AGostaria%20de%20saber%20mais%20informa%C3%A7%C3%B5es%20sobre%20valores%20e%20prazos." target="_blank" rel="noopener noreferrer">Orçamento</a><a href="/noticias.html">Notícias</a><a href="/vagas.html">Vagas</a><a class="btn nav-entry" href="/portal.html" title="Acesso restrito aos administradores">🔐 Área ADM</a></nav><button aria-label="Abrir menu" class="mobile-menu" onclick="document.querySelector('.navlinks').classList.toggle('show')">☰</button></div></header><main>
+</style><link rel="stylesheet" href="layout-vidro.css"><link rel="stylesheet" href="/milani-theme.css"></head><body class="milani-theme"><div id="site">
+<header class="milani-header">
+  <div class="milani-nav-inner">
+    <a class="milani-brand" href="/">
+      <img src="/milani-logo-novo.png" alt="" width="58" height="52">
+      <span>Milani Soluções Digitais</span>
+    </a>
+    <button class="milani-menu-toggle" id="milani-menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="milani-menu">☰</button>
+    <nav class="milani-menu" id="milani-menu" aria-label="Menu principal">
+      <a href="/servicos.html">Serviços</a>
+      <a href="/#planos">Planos</a>
+      <a href="/portfolio.html">Portfólio</a>
+      <a href="/orcamento.html">Orçamento</a>
+      <a href="/noticias.html">Notícias</a>
+      <a href="/vagas.html">Vagas</a>
+      <a href="/portal.html" class="milani-admin-link">Área ADM</a>
+    </nav>
+  </div>
+</header>
+<script defer src="/milani-menu.js"></script>
+<main>
 <section class="glass-home" id="apresentacao">
   <div class="glass-grid">
     <div>
