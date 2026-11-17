@@ -140,3 +140,33 @@ html body.milani-theme #site :is(#planos .pricing-card .btn,#contato .pulse-cont
   background: var(--milani-accent) !important;
   border-color: var(--milani-accent) !important;
 }
+
+/* Align inner-page navigation and service highlights with the homepage. */
+html body.milani-theme header.milani-header {
+  background: var(--milani-nav) !important;
+  border-color: var(--milani-line) !important;
+  color: var(--milani-text) !important;
+}
+html body.milani-theme .milani-header .milani-brand,
+html body.milani-theme .milani-header .milani-menu [aria-current="page"],
+html body.milani-theme .milani-header .milani-menu a:hover {
+  color: var(--milani-accent) !important;
+}
+html body.milani-theme main #servicos .milani-solutions-intro .section-index {
+  color: var(--milani-accent) !important;
+  font-size: 13px !important;
+  margin-bottom: 20px !important;
+  text-shadow: none !important;
+}
+html body.milani-theme main #servicos .milani-solutions-intro h1 em,
+html body.milani-theme main :is(.milani-projects-heading,.jobs-heading,.portfolio-home-head,.milani-whatsapp-quote) :is(.section-index,.portfolio-home-kicker,em) {
+  color: var(--milani-accent) !important;
+}
+html body.milani-theme main #servicos .milani-solutions-intro h1 {
+  font-weight: 550 !important;
+}
+html body.milani-theme main #servicos .milani-solutions-main-cta {
+  background: var(--milani-cream) !important;
+  color: #231d17 !important;
+  border-color: var(--milani-cream) !important;
+}
